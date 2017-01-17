@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vmath", "vmath\vmath.vcxproj", "{38D14148-13AD-4333-8611-0D8682470B48}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vmath_test", "vmath_test\vmath_test\vmath_test.vcxproj", "{4CC021AC-F624-4D55-A24B-C02A0465574F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{38D14148-13AD-4333-8611-0D8682470B48} = {38D14148-13AD-4333-8611-0D8682470B48}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38D14148-13AD-4333-8611-0D8682470B48}.Debug|x64.ActiveCfg = Debug|x64
+		{38D14148-13AD-4333-8611-0D8682470B48}.Debug|x64.Build.0 = Debug|x64
+		{38D14148-13AD-4333-8611-0D8682470B48}.Debug|x86.ActiveCfg = Debug|Win32
+		{38D14148-13AD-4333-8611-0D8682470B48}.Debug|x86.Build.0 = Debug|Win32
+		{38D14148-13AD-4333-8611-0D8682470B48}.Release|x64.ActiveCfg = Release|x64
+		{38D14148-13AD-4333-8611-0D8682470B48}.Release|x64.Build.0 = Release|x64
+		{38D14148-13AD-4333-8611-0D8682470B48}.Release|x86.ActiveCfg = Release|Win32
+		{38D14148-13AD-4333-8611-0D8682470B48}.Release|x86.Build.0 = Release|Win32
+		{4CC021AC-F624-4D55-A24B-C02A0465574F}.Debug|x64.ActiveCfg = Debug|x64
+		{4CC021AC-F624-4D55-A24B-C02A0465574F}.Debug|x64.Build.0 = Debug|x64
+		{4CC021AC-F624-4D55-A24B-C02A0465574F}.Debug|x86.ActiveCfg = Debug|Win32
+		{4CC021AC-F624-4D55-A24B-C02A0465574F}.Debug|x86.Build.0 = Debug|Win32
+		{4CC021AC-F624-4D55-A24B-C02A0465574F}.Release|x64.ActiveCfg = Release|x64
+		{4CC021AC-F624-4D55-A24B-C02A0465574F}.Release|x64.Build.0 = Release|x64
+		{4CC021AC-F624-4D55-A24B-C02A0465574F}.Release|x86.ActiveCfg = Release|Win32
+		{4CC021AC-F624-4D55-A24B-C02A0465574F}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
