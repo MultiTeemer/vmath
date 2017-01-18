@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\vmath\main.cpp" />
     <ClCompile Include="..\..\vmath\vec2_test.cpp" />
+    <ClCompile Include="mat4x4_test.cpp" />
     <ClCompile Include="vec3_test.cpp" />
     <ClCompile Include="vec4_test.cpp" />
   </ItemGroup>

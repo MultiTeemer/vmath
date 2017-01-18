@@ -30,6 +30,9 @@
     <ClCompile Include="vec4_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mat4x4_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\vmath\catch.h">
