@@ -117,6 +117,28 @@ TEST_CASE("mat4x4 creation", "[mat4x4]") {
 		REQUIRE(m[3][3] == Approx(16).epsilon(vmath::zero_tolerance));
 	}
 
+	SECTION("copy construction") {
+		auto original = vmath::mat4x4(1);
+		auto clone = vmath::mat4x4(original);
+
+		REQUIRE(clone[0][0] == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(clone[0][1] == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(clone[0][2] == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(clone[0][3] == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(clone[1][0] == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(clone[1][1] == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(clone[1][2] == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(clone[1][3] == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(clone[2][0] == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(clone[2][1] == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(clone[2][2] == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(clone[2][3] == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(clone[3][0] == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(clone[3][1] == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(clone[3][2] == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(clone[3][3] == Approx(1).epsilon(vmath::zero_tolerance));
+	}
+
 }
 
 TEST_CASE("mat4x4 element access", "[mat4x4]") {
