@@ -3,3 +3,4 @@
 **/[Rr]elease/*
 **/*.opendb
 **/*.db
+**/*.vcxproj.user*
