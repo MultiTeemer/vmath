@@ -52,24 +52,28 @@ namespace vmath {
 
 	mat4x4::mat4x4()
 		:
-		data{ 0 }
+		data()
 	{}
 
 	mat4x4::mat4x4(float_t value)
-		:
-		data{ value }
-	{}
-
-	mat4x4::mat4x4(float * const data)
-		:
-		data{ 0 }
 	{
+		data.fill(value);
+	}
+
+	mat4x4::mat4x4(float * const rawData)
+	{
+		std::copy(rawData, rawData + 16, data.data());
 	}
 
 	mat4x4::mat4x4(vec4 c1, vec4 c2, vec4 c3, vec4 c4)
-		:
-		data{ 0 }
-	{}
+	{
+		vec4 columns[4] = { c1, c2, c3, c4 };
+		for (int i = 0; i < 4; ++i) {
+			for (int j = 0; j < 4; ++j) {
+				data[i * 4 + j] = columns[i][j];
+			}
+		}
+	}
 
 	mat4x4::mat4x4(
 		float_t m00, float_t m01, float_t m02, float_t m03,
