@@ -5,6 +5,8 @@
 
 namespace vmath {
 
+	const int mat4x4::elements_count = 16;
+
 	mat4x4::element_proxy::element_proxy(float_t& element)
 		:
 		element(element)
@@ -96,6 +98,33 @@ namespace vmath {
 		auto addr = data.data() + idx_safe * 4;
 
 		return row_proxy(*addr, *(addr + 1), *(addr + 2), *(addr + 3));
+	}
+
+	const float_t& mat4x4::element_at(int idx) const
+	{
+		return data[idx];
+	}
+
+	float_t& mat4x4::element_at(int idx)
+	{
+		auto& const_me = const_cast<const mat4x4&>(*this);
+		return const_cast<float_t&>(const_me.element_at(idx));
+	}
+
+	bool operator==(const mat4x4& lhs, const mat4x4& rhs)
+	{
+		bool equal = true;
+
+		for (int i = 0; i < mat4x4::elements_count; ++i) {
+			equal &= lhs.element_at(i) == rhs.element_at(i);
+		}
+
+		return equal;
+	}
+
+	bool operator!=(const mat4x4& lhs, const mat4x4& rhs)
+	{
+		return !(lhs == rhs);
 	}
 
 }

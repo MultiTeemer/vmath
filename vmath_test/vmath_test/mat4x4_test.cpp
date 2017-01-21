@@ -181,3 +181,17 @@ TEST_CASE("mat4x4 element access", "[mat4x4]") {
 	}
 
 }
+
+TEST_CASE("mat4x4 operators", "[mat4x4]") {
+
+	SECTION("==/!=") {
+		auto m1 = vmath::mat4x4(1);
+		auto m2 = vmath::mat4x4(1);
+		auto m3 = vmath::mat4x4(2);
+
+		REQUIRE(m1 == m2);
+		REQUIRE(m1 != m3);
+		REQUIRE(m2 != m3);
+	}
+
+}

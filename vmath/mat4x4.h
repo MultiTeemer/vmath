@@ -12,6 +12,8 @@ namespace vmath {
 		class row_proxy;
 
 	public:
+		static const int elements_count;
+
 		mat4x4();
 		mat4x4(vec4 c1, vec4 c2, vec4 c3, vec4 c4);
 		mat4x4(
@@ -24,6 +26,9 @@ namespace vmath {
 		explicit mat4x4(float * const data);
 
 		row_proxy operator[](int idx);
+
+		friend bool operator==(const mat4x4& lhs, const mat4x4& rhs);
+		friend bool operator!=(const mat4x4& lhs, const mat4x4& rhs);
 
 	private:
 		class element_proxy
@@ -56,5 +61,8 @@ namespace vmath {
 		};
 
 		std::array<float_t, 16> data;
+
+		const float_t& element_at(int idx) const;
+		float_t& element_at(int idx);
 	};
 }
