@@ -194,4 +194,26 @@ TEST_CASE("mat4x4 operators", "[mat4x4]") {
 		REQUIRE(m2 != m3);
 	}
 
+	SECTION("+") {
+		auto m1 = vmath::mat4x4(1);
+		auto m2 = vmath::mat4x4(1);
+		auto m3 = vmath::mat4x4();
+		auto m4 = vmath::mat4x4(-1);
+		auto m5 = vmath::mat4x4(2);
+
+		REQUIRE(m1 + m2 == m2 + m1);
+		REQUIRE((m1 + m4) + m5 == m1 + (m4 + m5));
+		REQUIRE(m1 + m2 == m5);
+		REQUIRE(m1 + m1 == m5);
+		REQUIRE(m1 + m4 == m3);
+		REQUIRE(m1 + m2 + m4 == m1);
+	}
+
+	SECTION("+=") {
+		auto m1 = vmath::mat4x4();
+		auto m2 = vmath::mat4x4(1);
+
+		REQUIRE((m1 += m2) == m2);
+	}
+
 }

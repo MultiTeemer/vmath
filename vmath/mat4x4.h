@@ -30,6 +30,9 @@ namespace vmath {
 		friend bool operator==(const mat4x4& lhs, const mat4x4& rhs);
 		friend bool operator!=(const mat4x4& lhs, const mat4x4& rhs);
 
+		friend mat4x4 operator+(mat4x4 lhs, const mat4x4& rhs);
+		friend mat4x4& operator+=(mat4x4& lhs, const mat4x4& rhs);
+
 	private:
 		class element_proxy
 		{

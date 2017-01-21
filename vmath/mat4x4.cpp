@@ -127,4 +127,18 @@ namespace vmath {
 		return !(lhs == rhs);
 	}
 
+	mat4x4 operator+(mat4x4 lhs, const mat4x4& rhs)
+	{
+		return lhs += rhs;
+	}
+
+	mat4x4& operator+=(mat4x4& lhs, const mat4x4& rhs)
+	{
+		for (int i = 0; i < mat4x4::elements_count; ++i) {
+			lhs.element_at(i) += rhs.element_at(i);
+		}
+
+		return lhs;
+	}
+
 }
