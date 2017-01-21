@@ -182,6 +182,30 @@ TEST_CASE("mat4x4 element access", "[mat4x4]") {
 
 }
 
+TEST_CASE("mat4x4 constants", "[mat4x4]") {
+
+	REQUIRE(vmath::mat4x4::elements_count == 16);
+
+	auto m = vmath::mat4x4::identity;
+
+	REQUIRE(m[0][0] == Approx(1).epsilon(vmath::zero_tolerance));
+	REQUIRE(m[0][1] == Approx(0).epsilon(vmath::zero_tolerance));
+	REQUIRE(m[0][2] == Approx(0).epsilon(vmath::zero_tolerance));
+	REQUIRE(m[0][3] == Approx(0).epsilon(vmath::zero_tolerance));
+	REQUIRE(m[1][0] == Approx(0).epsilon(vmath::zero_tolerance));
+	REQUIRE(m[1][1] == Approx(1).epsilon(vmath::zero_tolerance));
+	REQUIRE(m[1][2] == Approx(0).epsilon(vmath::zero_tolerance));
+	REQUIRE(m[1][3] == Approx(0).epsilon(vmath::zero_tolerance));
+	REQUIRE(m[2][0] == Approx(0).epsilon(vmath::zero_tolerance));
+	REQUIRE(m[2][1] == Approx(0).epsilon(vmath::zero_tolerance));
+	REQUIRE(m[2][2] == Approx(1).epsilon(vmath::zero_tolerance));
+	REQUIRE(m[2][3] == Approx(0).epsilon(vmath::zero_tolerance));
+	REQUIRE(m[3][0] == Approx(0).epsilon(vmath::zero_tolerance));
+	REQUIRE(m[3][1] == Approx(0).epsilon(vmath::zero_tolerance));
+	REQUIRE(m[3][2] == Approx(0).epsilon(vmath::zero_tolerance));
+	REQUIRE(m[3][3] == Approx(1).epsilon(vmath::zero_tolerance));
+}
+
 TEST_CASE("mat4x4 operators", "[mat4x4]") {
 
 	SECTION("==/!=") {
