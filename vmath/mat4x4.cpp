@@ -7,6 +7,13 @@ namespace vmath {
 
 	const int mat4x4::elements_count = 16;
 
+	const mat4x4 mat4x4::identity = mat4x4(
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		0, 0, 0, 1
+	);
+
 	mat4x4::element_proxy::element_proxy(float_t& element)
 		:
 		element(element)
@@ -100,6 +107,14 @@ namespace vmath {
 		return row_proxy(*addr, *(addr + 1), *(addr + 2), *(addr + 3));
 	}
 
+	vec4 mat4x4::operator[] (int idx) const
+	{
+		auto non_cost_me = const_cast<mat4x4&>(*this);
+		auto proxy = non_cost_me[idx];
+
+		return vec4(proxy[0], proxy[1], proxy[2], proxy[3]);
+	}
+
 	const float_t& mat4x4::element_at(int idx) const
 	{
 		return data[idx];
@@ -155,6 +170,57 @@ namespace vmath {
 	{
 		for (int i = 0; i < mat4x4::elements_count; ++i) {
 			lhs.element_at(i) -= rhs.element_at(i);
+		}
+
+		return lhs;
+	}
+
+	mat4x4 operator*(mat4x4 lhs, const mat4x4& rhs)
+	{
+		auto m00 = (((lhs[0][0] * rhs[0][0]) + (lhs[0][1] * rhs[1][0])) + (lhs[0][2] * rhs[2][0])) + (lhs[0][3] * rhs[3][0]);
+		auto m01 = (((lhs[0][0] * rhs[0][1]) + (lhs[0][1] * rhs[1][1])) + (lhs[0][2] * rhs[2][1])) + (lhs[0][3] * rhs[3][1]);
+		auto m02 = (((lhs[0][0] * rhs[0][2]) + (lhs[0][1] * rhs[1][2])) + (lhs[0][2] * rhs[2][2])) + (lhs[0][3] * rhs[3][2]);
+		auto m03 = (((lhs[0][0] * rhs[0][3]) + (lhs[0][1] * rhs[1][3])) + (lhs[0][2] * rhs[2][3])) + (lhs[0][3] * rhs[3][3]);
+		auto m10 = (((lhs[1][0] * rhs[0][0]) + (lhs[1][1] * rhs[1][0])) + (lhs[1][2] * rhs[2][0])) + (lhs[1][3] * rhs[3][0]);
+		auto m11 = (((lhs[1][0] * rhs[0][1]) + (lhs[1][1] * rhs[1][1])) + (lhs[1][2] * rhs[2][1])) + (lhs[1][3] * rhs[3][1]);
+		auto m12 = (((lhs[1][0] * rhs[0][2]) + (lhs[1][1] * rhs[1][2])) + (lhs[1][2] * rhs[2][2])) + (lhs[1][3] * rhs[3][2]);
+		auto m13 = (((lhs[1][0] * rhs[0][3]) + (lhs[1][1] * rhs[1][3])) + (lhs[1][2] * rhs[2][3])) + (lhs[1][3] * rhs[3][3]);
+		auto m20 = (((lhs[2][0] * rhs[0][0]) + (lhs[2][1] * rhs[1][0])) + (lhs[2][2] * rhs[2][0])) + (lhs[2][3] * rhs[3][0]);
+		auto m21 = (((lhs[2][0] * rhs[0][1]) + (lhs[2][1] * rhs[1][1])) + (lhs[2][2] * rhs[2][1])) + (lhs[2][3] * rhs[3][1]);
+		auto m22 = (((lhs[2][0] * rhs[0][2]) + (lhs[2][1] * rhs[1][2])) + (lhs[2][2] * rhs[2][2])) + (lhs[2][3] * rhs[3][2]);
+		auto m23 = (((lhs[2][0] * rhs[0][3]) + (lhs[2][1] * rhs[1][3])) + (lhs[2][2] * rhs[2][3])) + (lhs[2][3] * rhs[3][3]);
+		auto m30 = (((lhs[3][0] * rhs[0][0]) + (lhs[3][1] * rhs[1][0])) + (lhs[3][2] * rhs[2][0])) + (lhs[3][3] * rhs[3][0]);
+		auto m31 = (((lhs[3][0] * rhs[0][1]) + (lhs[3][1] * rhs[1][1])) + (lhs[3][2] * rhs[2][1])) + (lhs[3][3] * rhs[3][1]);
+		auto m32 = (((lhs[3][0] * rhs[0][2]) + (lhs[3][1] * rhs[1][2])) + (lhs[3][2] * rhs[2][2])) + (lhs[3][3] * rhs[3][2]);
+		auto m33 = (((lhs[3][0] * rhs[0][3]) + (lhs[3][1] * rhs[1][3])) + (lhs[3][2] * rhs[2][3])) + (lhs[3][3] * rhs[3][3]);
+
+		return mat4x4(
+			m00, m01, m02, m03,
+			m10, m11, m12, m13,
+			m20, m21, m22, m23,
+			m30, m31, m32, m33
+		);
+	}
+
+	mat4x4 operator*(mat4x4 lhs, float_t rhs)
+	{
+		return lhs *= rhs;;
+	}
+
+	mat4x4 operator*(float_t lhs, mat4x4 rhs)
+	{
+		return rhs *= lhs;
+	}
+
+	mat4x4& operator*=(mat4x4& lhs, const mat4x4& rhs)
+	{
+		return lhs = lhs * rhs;
+	}
+
+	mat4x4& operator*=(mat4x4& lhs, float_t rhs)
+	{
+		for (int i = 0; i < mat4x4::elements_count; ++i) {
+			lhs.element_at(i) *= rhs;
 		}
 
 		return lhs;

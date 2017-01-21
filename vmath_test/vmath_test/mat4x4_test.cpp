@@ -237,4 +237,58 @@ TEST_CASE("mat4x4 operators", "[mat4x4]") {
 		REQUIRE((m1 -= m2) == m3);
 	}
 
+	SECTION("*") {
+
+		SECTION("by scalar") {
+			auto m = vmath::mat4x4(1);
+
+			REQUIRE(m * 2 == 2 * m);
+			REQUIRE(m * 2 == vmath::mat4x4(2));
+			REQUIRE(m * 1 == m);
+			REQUIRE(2 * m * 3 == 6 * m);
+		}
+
+		SECTION("by mat4x4") {
+			auto m = vmath::mat4x4(1);
+			auto i = vmath::mat4x4::identity;
+			auto o33 = vmath::mat4x4(
+				0, 0, 0, 0,
+				0, 0, 0, 0,
+				0, 0, 0, 0,
+				0, 0, 0, 1
+			);
+
+			REQUIRE(m * i == m);
+			REQUIRE(m * i == i * m);
+			REQUIRE(m * m == vmath::mat4x4(4));
+			REQUIRE((m * o33)[3][3] == 1);
+		}
+
+	}
+
+	SECTION("*=") {
+
+		SECTION("by scalar") {
+			auto m = vmath::mat4x4(1);
+
+			REQUIRE((m *= 1) == m);
+			REQUIRE((m *= 2) == vmath::mat4x4(2));
+			REQUIRE((m *= 1 / 2.0) == vmath::mat4x4(1));
+		}
+
+		SECTION("by mat4x4") {
+			auto m = vmath::mat4x4(1);
+			auto o33 = vmath::mat4x4(
+				0, 0, 0, 0,
+				0, 0, 0, 0,
+				0, 0, 0, 0,
+				0, 0, 0, 1
+			);
+
+			REQUIRE((m *= m) == vmath::mat4x4(4));
+			REQUIRE((m *= o33)[3][3] == 4);
+		}
+
+	}
+
 }
