@@ -18,12 +18,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\vmath\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\vmath\vec2_test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="vec3_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -33,9 +27,15 @@
     <ClCompile Include="mat4x4_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="vec2_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\vmath\catch.h">
+    <ClInclude Include="catch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

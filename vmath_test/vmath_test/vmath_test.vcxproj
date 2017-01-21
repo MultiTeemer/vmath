@@ -76,6 +76,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>D:\Works\C++\vmath\x64\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Works\C++\vmath\vmath;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -109,6 +111,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>vmath.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -149,14 +152,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\vmath\main.cpp" />
-    <ClCompile Include="..\..\vmath\vec2_test.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="mat4x4_test.cpp" />
+    <ClCompile Include="vec2_test.cpp" />
     <ClCompile Include="vec3_test.cpp" />
     <ClCompile Include="vec4_test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\vmath\catch.h" />
+    <ClInclude Include="catch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
