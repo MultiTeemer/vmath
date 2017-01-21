@@ -33,6 +33,10 @@ namespace vmath {
 		friend mat4x4 operator+(mat4x4 lhs, const mat4x4& rhs);
 		friend mat4x4& operator+=(mat4x4& lhs, const mat4x4& rhs);
 
+		friend mat4x4 operator-(const mat4x4& arg);
+		friend mat4x4 operator-(mat4x4 lhs, const mat4x4& rhs);
+		friend mat4x4& operator-=(mat4x4& lhs, const mat4x4& rhs);
+
 	private:
 		class element_proxy
 		{
