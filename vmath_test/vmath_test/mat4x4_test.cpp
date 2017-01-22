@@ -338,3 +338,28 @@ TEST_CASE("mat4x4 operators", "[mat4x4]") {
 	}
 
 }
+
+TEST_CASE("mat4x4 mathematics", "[mat4x4]") {
+
+	SECTION("transpose") {
+		auto i = vmath::mat4x4::identity;
+		auto m = vmath::mat4x4(
+			1, 2, 3, 0,
+			0, 0, 0, 0,
+			3, 4, 5, 6,
+			1, 1, 0, 1
+		);
+		auto mt = vmath::mat4x4(
+			1, 0, 3, 1,
+			2, 0, 4, 1,
+			3, 0, 5, 0,
+			0, 0, 6, 1
+		);
+
+		REQUIRE(i.transposed() == i);
+		REQUIRE(m.transposed() == mt);
+		REQUIRE(m == mt.transposed());
+		REQUIRE(m.transposed().transposed() == m);
+	}
+
+}

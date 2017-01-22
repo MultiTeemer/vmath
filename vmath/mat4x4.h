@@ -27,6 +27,8 @@ namespace vmath {
 		explicit mat4x4(float_t value);
 		explicit mat4x4(float * const data);
 
+		mat4x4 transposed() const;
+
 		row_proxy operator[](int idx);
 		vec4 operator[](int idx) const;
 

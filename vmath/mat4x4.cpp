@@ -99,6 +99,22 @@ namespace vmath {
 		}
 	{}
 
+	mat4x4 mat4x4::transposed() const
+	{
+		auto& me = *this;
+		auto c1 = me[0];
+		auto c2 = me[1];
+		auto c3 = me[2];
+		auto c4 = me[3];
+
+		return mat4x4(
+			c1[0], c2[0], c3[0], c4[0],
+			c1[1], c2[1], c3[1], c4[1],
+			c1[2], c2[2], c3[2], c4[2],
+			c1[3], c2[3], c3[3], c4[3]
+		);
+	}
+
 	mat4x4::row_proxy mat4x4::operator[](int idx)
 	{
 		int idx_safe = std::max(std::min(idx, 3), 0);
