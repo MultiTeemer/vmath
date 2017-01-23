@@ -138,6 +138,7 @@
   <ItemGroup>
     <ClInclude Include="globals.h" />
     <ClInclude Include="mat4x4.h" />
+    <ClInclude Include="utils.h" />
     <ClInclude Include="vec2.h" />
     <ClInclude Include="vec3.h" />
     <ClInclude Include="vec4.h" />
@@ -145,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mat4x4.cpp" />
+    <ClCompile Include="utils.cpp" />
     <ClCompile Include="vec2.cpp" />
     <ClCompile Include="vec3.cpp" />
     <ClCompile Include="vec4.cpp" />

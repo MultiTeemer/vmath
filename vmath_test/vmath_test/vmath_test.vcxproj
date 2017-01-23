@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mat4x4_test.cpp" />
+    <ClCompile Include="utils_test.cpp" />
     <ClCompile Include="vec2_test.cpp" />
     <ClCompile Include="vec3_test.cpp" />
     <ClCompile Include="vec4_test.cpp" />
