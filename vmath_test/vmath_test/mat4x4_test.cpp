@@ -363,3 +363,20 @@ TEST_CASE("mat4x4 mathematics", "[mat4x4]") {
 	}
 
 }
+
+TEST_CASE("mat4x4 space transformations", "[mat4x4]") {
+
+	SECTION("translation") {
+		auto t = vmath::vec3(1, 2, 3);
+		auto m = vmath::mat4x4::translation(t);
+		auto e = vmath::mat4x4(
+			1, 0, 0, 0,
+			0, 1, 0, 0,
+			0, 0, 1, 0,
+			1, 2, 3, 1
+		);
+
+		REQUIRE(m == e);
+	}
+
+}

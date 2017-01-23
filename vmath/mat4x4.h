@@ -48,6 +48,8 @@ namespace vmath {
 		friend mat4x4& operator*=(mat4x4& lhs, const mat4x4& rhs);
 		friend mat4x4& operator*= (mat4x4& lhs, float_t rhs);
 
+		static mat4x4 translation(const vec3& t);
+
 	private:
 		class element_proxy
 		{

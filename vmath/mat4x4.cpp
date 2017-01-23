@@ -142,6 +142,16 @@ namespace vmath {
 		return const_cast<float_t&>(const_me.element_at(idx));
 	}
 
+	mat4x4 mat4x4::translation(const vec3& t)
+	{
+		auto c1 = vec4(1, 0, 0, 0);
+		auto c2 = vec4(0, 1, 0, 0);
+		auto c3 = vec4(0, 0, 1, 0);
+		auto c4 = vec4(t, 1);
+
+		return mat4x4(c1, c2, c3, c4);
+	}
+
 	bool operator==(const mat4x4& lhs, const mat4x4& rhs)
 	{
 		bool equal = true;
