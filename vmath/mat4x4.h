@@ -58,6 +58,8 @@ namespace vmath {
 		static mat4x4 scale(float_t s);
 		static mat4x4 scale(const vec3& scale);
 
+		static mat4x4 ortho(float_t left, float_t right, float_t bottom, float_t top, float_t near, float_t far);
+
 	private:
 		class element_proxy
 		{

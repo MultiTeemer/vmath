@@ -219,6 +219,16 @@ namespace vmath {
 		);
 	}
 
+	mat4x4 mat4x4::ortho(float_t left, float_t right, float_t bottom, float_t top, float_t near, float_t far)
+	{
+		return mat4x4(
+			2 / (right - left), 0, 0, 0,
+			0, 2 / (top - bottom), 0, 0,
+			0, 0, 2 / (far - near), 0,
+			(right + left) / (left - right), (top + bottom) / (bottom - top), (far + near) / (near - far), 1
+		);
+	}
+
 	bool operator==(const mat4x4& lhs, const mat4x4& rhs)
 	{
 		bool equal = true;
