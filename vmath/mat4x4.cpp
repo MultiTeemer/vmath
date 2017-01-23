@@ -224,7 +224,7 @@ namespace vmath {
 		return mat4x4(
 			2 / (right - left), 0, 0, 0,
 			0, 2 / (top - bottom), 0, 0,
-			0, 0, 2 / (far - near), 0,
+			0, 0, 2 / (near - far), 0,
 			(right + left) / (left - right), (top + bottom) / (bottom - top), (far + near) / (near - far), 1
 		);
 	}
