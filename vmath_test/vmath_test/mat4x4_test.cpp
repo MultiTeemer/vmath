@@ -419,4 +419,32 @@ TEST_CASE("mat4x4 space transformations", "[mat4x4]") {
 		}
 	}
 
+	SECTION("scaling") {
+		SECTION("by scalar") {
+			float s = 5;
+			auto m = vmath::mat4x4::scale(s);
+			auto e = vmath::mat4x4(
+				5, 0, 0, 0,
+				0, 5, 0, 0,
+				0, 0, 5, 0,
+				0, 0, 0, 1
+			);
+
+			REQUIRE(m == e);
+		}
+
+		SECTION("by vector") {
+			auto s = vmath::vec3(1, 2, 3);
+			auto m = vmath::mat4x4::scale(s);
+			auto e = vmath::mat4x4(
+				1, 0, 0, 0,
+				0, 2, 0, 0,
+				0, 0, 3, 0,
+				0, 0, 0, 1
+			);
+
+			REQUIRE(m == e);
+		}
+	}
+
 }

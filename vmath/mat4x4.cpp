@@ -192,6 +192,26 @@ namespace vmath {
 		);
 	}
 
+	mat4x4 mat4x4::scale(float_t s)
+	{
+		return mat4x4(
+			s, 0, 0, 0,
+			0, s, 0, 0,
+			0, 0, s, 0,
+			0, 0, 0, 1
+		);
+	}
+
+	mat4x4 mat4x4::scale(const vec3& s)
+	{
+		return mat4x4(
+			s.x, 0, 0, 0,
+			0, s.y, 0, 0,
+			0, 0, s.z, 0,
+			0, 0, 0, 1
+		);
+	}
+
 	bool operator==(const mat4x4& lhs, const mat4x4& rhs)
 	{
 		bool equal = true;
