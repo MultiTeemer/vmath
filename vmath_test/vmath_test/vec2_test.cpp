@@ -144,19 +144,25 @@ TEST_CASE("vec2 mathematics", "[vec2]") {
 	auto one_x = vmath::vec2(1, 0);
 	auto one_y = vmath::vec2(0, 1);
 
-	REQUIRE(zero.magnitude() == Approx(0).epsilon(vmath::zero_tolerance));
-	REQUIRE(zero.magnitude_squared() == Approx(0).epsilon(vmath::zero_tolerance));
-	REQUIRE(one.magnitude_squared() == Approx(2).epsilon(vmath::zero_tolerance));
-	REQUIRE(one.magnitude() == Approx(sqrt(2)).epsilon(vmath::zero_tolerance));
-	REQUIRE(one_x.magnitude() == Approx(1).epsilon(vmath::zero_tolerance));
-	REQUIRE(one_y.magnitude() == Approx(1).epsilon(vmath::zero_tolerance));
+	SECTION("magnitude") {
+		REQUIRE(zero.magnitude() == Approx(0).epsilon(vmath::zero_tolerance));
+		REQUIRE(zero.magnitude_squared() == Approx(0).epsilon(vmath::zero_tolerance));
+		REQUIRE(one.magnitude_squared() == Approx(2).epsilon(vmath::zero_tolerance));
+		REQUIRE(one.magnitude() == Approx(sqrt(2)).epsilon(vmath::zero_tolerance));
+		REQUIRE(one_x.magnitude() == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(one_y.magnitude() == Approx(1).epsilon(vmath::zero_tolerance));
+	}
 
-	REQUIRE(zero.dot(one) == one.dot(zero));
-	REQUIRE(zero.dot(one) == Approx(0).epsilon(vmath::zero_tolerance));
-	REQUIRE(two.dot(two) == Approx(two.magnitude_squared()).epsilon(vmath::zero_tolerance));
-	REQUIRE(one_x.dot(one_y) == Approx(0).epsilon(vmath::zero_tolerance));
+	SECTION("dot product") {
+		REQUIRE(zero.dot(one) == one.dot(zero));
+		REQUIRE(zero.dot(one) == Approx(0).epsilon(vmath::zero_tolerance));
+		REQUIRE(two.dot(two) == Approx(two.magnitude_squared()).epsilon(vmath::zero_tolerance));
+		REQUIRE(one_x.dot(one_y) == Approx(0).epsilon(vmath::zero_tolerance));
+	}
 
-	REQUIRE(one_x.cross(one_y) == -one_y.cross(one_x));
-	REQUIRE(one_x.cross(one_y) == 1);
+	SECTION("cross product") {
+		REQUIRE(one_x.cross(one_y) == -one_y.cross(one_x));
+		REQUIRE(one_x.cross(one_y) == 1);
+	}
 
 }
