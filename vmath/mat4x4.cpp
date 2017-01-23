@@ -253,7 +253,7 @@ namespace vmath {
 		bool equal = true;
 
 		for (int i = 0; i < mat4x4::elements_count; ++i) {
-			equal &= lhs.element_at(i) == rhs.element_at(i);
+			equal &= abs(lhs.element_at(i) - rhs.element_at(i)) < zero_tolerance;
 		}
 
 		return equal;
