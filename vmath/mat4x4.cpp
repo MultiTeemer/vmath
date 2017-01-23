@@ -116,6 +116,13 @@ namespace vmath {
 		);
 	}
 
+	mat4x4 mat4x4::homogenized() const
+	{
+		auto last = data.back();
+
+		return (*this) * (1 / last);
+	}
+
 	mat4x4::row_proxy mat4x4::operator[](int idx)
 	{
 		int idx_safe = std::max(std::min(idx, 3), 0);

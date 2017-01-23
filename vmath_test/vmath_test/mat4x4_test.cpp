@@ -362,6 +362,19 @@ TEST_CASE("mat4x4 mathematics", "[mat4x4]") {
 		REQUIRE(m.transposed().transposed() == m);
 	}
 
+	SECTION("homogenization") {
+		auto i = vmath::mat4x4::identity;
+		auto m = vmath::mat4x4(
+			5, 0, 0, 0,
+			0, 5, 0, 0,
+			0, 0, 5, 0,
+			0, 0, 0, 5
+		);
+
+		REQUIRE(i == i.homogenized());
+		REQUIRE(m.homogenized() == i);
+	}
+
 }
 
 TEST_CASE("mat4x4 space transformations", "[mat4x4]") {
