@@ -379,4 +379,44 @@ TEST_CASE("mat4x4 space transformations", "[mat4x4]") {
 		REQUIRE(m == e);
 	}
 
+	SECTION("rotations") {
+		const float x = vmath::deg_to_rad(45);
+
+		SECTION("around x-axis") {
+			auto m = vmath::mat4x4::rotation_x(x);
+			auto e = vmath::mat4x4(
+				1, 0, 0, 0,
+				0, cos(x), sin(x), 0,
+				0, -sin(x), cos(x), 0,
+				0, 0, 0, 1
+			);
+
+			REQUIRE(m == e);
+		}
+
+		SECTION("around y-axis") {
+			auto m = vmath::mat4x4::rotation_y(x);
+			auto e = vmath::mat4x4(
+				cos(x), 0, -sin(x), 0,
+				0, 1, 0, 0,
+				sin(x), 0, cos(x), 0,
+				0, 0, 0, 1
+			);
+
+			REQUIRE(m == e);
+		}
+
+		SECTION("around z-axis") {
+			auto m = vmath::mat4x4::rotation_z(x);
+			auto e = vmath::mat4x4(
+				cos(x), sin(x), 0, 0,
+				-sin(x), cos(x), 0, 0,
+				0, 0, 1, 0,
+				0, 0, 0, 1
+			);
+
+			REQUIRE(m == e);
+		}
+	}
+
 }

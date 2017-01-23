@@ -2,6 +2,7 @@
 #include "mat4x4.h"
 
 #include <algorithm>
+#include <cmath>
 
 namespace vmath {
 
@@ -150,6 +151,45 @@ namespace vmath {
 		auto c4 = vec4(t, 1);
 
 		return mat4x4(c1, c2, c3, c4);
+	}
+
+	mat4x4 mat4x4::rotation_x(float_t rad)
+	{
+		auto sinx = sin(rad);
+		auto cosx = cos(rad);
+
+		return mat4x4(
+			1, 0, 0, 0,
+			0, cosx, sinx, 0,
+			0, -sinx, cosx, 0,
+			0, 0, 0, 1
+		);
+	}
+
+	mat4x4 mat4x4::rotation_y(float_t rad)
+	{
+		auto sinx = sin(rad);
+		auto cosx = cos(rad);
+
+		return mat4x4(
+			cosx, 0, -sinx, 0,
+			0, 1, 0, 0,
+			sinx, 0, cosx, 0,
+			0, 0, 0, 1
+		);
+	}
+
+	mat4x4 mat4x4::rotation_z(float_t rad)
+	{
+		auto sinx = sin(rad);
+		auto cosx = cos(rad);
+
+		return mat4x4(
+			cosx, sinx, 0, 0,
+			-sinx, cosx, 0, 0,
+			0, 0, 1, 0,
+			0, 0, 0, 1
+		);
 	}
 
 	bool operator==(const mat4x4& lhs, const mat4x4& rhs)

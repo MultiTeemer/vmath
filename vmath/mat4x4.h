@@ -50,6 +50,10 @@ namespace vmath {
 
 		static mat4x4 translation(const vec3& t);
 
+		static mat4x4 rotation_x(float_t rad);
+		static mat4x4 rotation_y(float_t rad);
+		static mat4x4 rotation_z(float_t rad);
+
 	private:
 		class element_proxy
 		{
