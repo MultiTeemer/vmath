@@ -165,4 +165,13 @@ TEST_CASE("vec2 mathematics", "[vec2]") {
 		REQUIRE(one_x.cross(one_y) == 1);
 	}
 
+	SECTION("normalization") {
+		auto v = vmath::vec2(3, 4);
+		auto vn = v.normalized();
+
+		REQUIRE(vn.magnitude() == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(vn.x == Approx(3 / 5.0).epsilon(vmath::zero_tolerance));
+		REQUIRE(vn.y == Approx(4 / 5.0).epsilon(vmath::zero_tolerance));
+	}
+
 }

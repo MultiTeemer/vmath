@@ -53,6 +53,12 @@ namespace vmath {
 		return x * other.y - y * other.x;
 	}
 
+	vec2 vec2::normalized() const
+	{
+		auto m = magnitude();
+		return vec2(x / m, y / m);
+	}
+
 	bool operator==(const vec2& lhs, const vec2& rhs)
 	{
 		return abs(lhs.x - rhs.x) < zero_tolerance && abs(lhs.y - rhs.y) < zero_tolerance;

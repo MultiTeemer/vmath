@@ -18,6 +18,8 @@ namespace vmath
 		float_t dot(const vec2& other) const;
 		float_t cross(const vec2& other) const;
 
+		vec2 normalized() const;
+
 		static const vec2 zero;
 		static const vec2 half;
 		static const vec2 one;
