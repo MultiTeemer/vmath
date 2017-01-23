@@ -66,6 +66,11 @@ namespace vmath {
 		}
 	}
 
+	float_t sum_of_elements(const vec4& v)
+	{
+		return v.x + v.y + v.z + v.w;
+	}
+
 	bool operator==(const vec4& lhs, const vec4& rhs)
 	{
 		return abs(lhs.x - rhs.x) < zero_tolerance

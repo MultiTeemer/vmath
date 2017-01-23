@@ -25,6 +25,8 @@ namespace vmath {
 		static const vec4 unit_w;
 	};
 
+	float_t sum_of_elements(const vec4& v);
+
 	bool operator==(const vec4& lhs, const vec4& rhs);
 	bool operator!=(const vec4& lhs, const vec4& rhs);
 

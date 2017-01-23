@@ -140,6 +140,14 @@ namespace vmath {
 		return vec4(*addr, *(addr + 1), *(addr + 2), *(addr + 3));
 	}
 
+	vec4 mat4x4::row(int idx) const
+	{
+		int idx_safe = std::max(std::min(idx, 3), 0);
+		auto addr = data.data() + idx_safe;
+
+		return vec4(*addr, *(addr + 4), *(addr + 8), *(addr + 12));
+	}
+
 	const float_t& mat4x4::element_at(int idx) const
 	{
 		return data[idx];
@@ -360,6 +368,16 @@ namespace vmath {
 		}
 
 		return lhs;
+	}
+
+	vec4 operator*(const mat4x4& lhs, const vec4& rhs)
+	{
+		return vec4(
+			sum_of_elements(lhs.row(0) * rhs),
+			sum_of_elements(lhs.row(1) * rhs),
+			sum_of_elements(lhs.row(2) * rhs),
+			sum_of_elements(lhs.row(3) * rhs)
+		);
 	}
 
 }

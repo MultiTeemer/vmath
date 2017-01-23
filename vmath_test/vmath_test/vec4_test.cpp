@@ -186,3 +186,17 @@ TEST_CASE("vec4 mathematics", "[vec4]") {
 	}
 
 }
+
+TEST_CASE("additional functionality", "[vec4]") {
+
+	SECTION("sum of elements") {
+		auto o = vmath::vec4::one;
+		auto v1 = vmath::vec4(3);
+		auto v2 = vmath::vec4(1, 2, 3, 4);
+
+		REQUIRE(vmath::sum_of_elements(o) == 4);
+		REQUIRE(vmath::sum_of_elements(v1) == 12);
+		REQUIRE(vmath::sum_of_elements(v2) == 10);
+	}
+
+}

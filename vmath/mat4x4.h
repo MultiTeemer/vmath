@@ -33,6 +33,8 @@ namespace vmath {
 		row_proxy operator[](int idx);
 		vec4 operator[](int idx) const;
 
+		vec4 row(int idx) const;
+
 		friend bool operator==(const mat4x4& lhs, const mat4x4& rhs);
 		friend bool operator!=(const mat4x4& lhs, const mat4x4& rhs);
 
@@ -48,6 +50,8 @@ namespace vmath {
 		friend mat4x4 operator*(float_t lhs, mat4x4 rhs);
 		friend mat4x4& operator*=(mat4x4& lhs, const mat4x4& rhs);
 		friend mat4x4& operator*= (mat4x4& lhs, float_t rhs);
+
+		friend vec4 operator*(const mat4x4& lhs, const vec4& rhs);
 
 		static mat4x4 translation(const vec3& t);
 

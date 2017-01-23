@@ -220,6 +220,15 @@ TEST_CASE("mat4x4 element access", "[mat4x4]") {
 		REQUIRE(m[3][3] == Approx(1).epsilon(vmath::zero_tolerance));
 	}
 
+	SECTION("row access") {
+		auto m = vmath::mat4x4(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+
+		REQUIRE(m.row(0) == vmath::vec4(1, 5, 9, 13));
+		REQUIRE(m.row(1) == vmath::vec4(2, 6, 10, 14));
+		REQUIRE(m.row(2) == vmath::vec4(3, 7, 11, 15));
+		REQUIRE(m.row(3) == vmath::vec4(4, 8, 12, 16));
+	}
+
 }
 
 TEST_CASE("mat4x4 constants", "[mat4x4]") {
@@ -326,6 +335,15 @@ TEST_CASE("mat4x4 operators", "[mat4x4]") {
 			REQUIRE(m * i == i * m);
 			REQUIRE(m * m == vmath::mat4x4(4));
 			REQUIRE((m * o33)[3][3] == 1);
+		}
+
+		SECTION("by vec4") {
+			auto i = vmath::mat4x4::identity;
+			auto o = vmath::mat4x4(1);
+			auto v = vmath::vec4(1, 2, 3, 4);
+
+			REQUIRE(i * v == v);
+			REQUIRE(o * v == vmath::vec4(10));
 		}
 
 	}
