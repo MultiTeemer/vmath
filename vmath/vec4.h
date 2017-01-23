@@ -16,7 +16,7 @@ namespace vmath {
 		explicit vec4(float_t value);
 		explicit vec4(const vec3& xyz, float_t w = 0);
 
-		vec4 normalized_by_w() const;
+		vec4 homogenized() const;
 
 		float_t operator[](int idx) const;
 

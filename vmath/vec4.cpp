@@ -41,7 +41,7 @@ namespace vmath {
 		w(w)
 	{}
 
-	vec4 vec4::normalized_by_w() const
+	vec4 vec4::homogenized() const
 	{
 		return vec4(
 			x / w,

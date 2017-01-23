@@ -175,3 +175,14 @@ TEST_CASE("vec4 operators", "[vec4]") {
 	}
 
 }
+
+TEST_CASE("vec4 mathematics", "[vec4]") {
+
+	SECTION("homogenization") {
+		auto v = vmath::vec4(3, 3, 3, 3);
+		auto vh = v.homogenized();
+
+		REQUIRE(vh == vmath::vec4(1));
+	}
+
+}
