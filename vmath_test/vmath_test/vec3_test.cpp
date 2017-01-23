@@ -165,20 +165,26 @@ TEST_CASE("vec3 mathematics", "[vec3]") {
 	auto one_y = vmath::vec3(0, 1);
 	auto one_z = vmath::vec3(0, 0, 1);
 
-	REQUIRE(zero.magnitude() == Approx(0).epsilon(vmath::zero_tolerance));
-	REQUIRE(zero.magnitude_squared() == Approx(0).epsilon(vmath::zero_tolerance));
-	REQUIRE(one.magnitude_squared() == Approx(3).epsilon(vmath::zero_tolerance));
-	REQUIRE(one.magnitude() == Approx(sqrt(3)).epsilon(vmath::zero_tolerance));
-	REQUIRE(one_x.magnitude() == Approx(1).epsilon(vmath::zero_tolerance));
-	REQUIRE(one_y.magnitude() == Approx(1).epsilon(vmath::zero_tolerance));
-	REQUIRE(one_z.magnitude() == Approx(1).epsilon(vmath::zero_tolerance));
+	SECTION("magnitude") {
+		REQUIRE(zero.magnitude() == Approx(0).epsilon(vmath::zero_tolerance));
+		REQUIRE(zero.magnitude_squared() == Approx(0).epsilon(vmath::zero_tolerance));
+		REQUIRE(one.magnitude_squared() == Approx(3).epsilon(vmath::zero_tolerance));
+		REQUIRE(one.magnitude() == Approx(sqrt(3)).epsilon(vmath::zero_tolerance));
+		REQUIRE(one_x.magnitude() == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(one_y.magnitude() == Approx(1).epsilon(vmath::zero_tolerance));
+		REQUIRE(one_z.magnitude() == Approx(1).epsilon(vmath::zero_tolerance));
+	}
 
-	REQUIRE(zero.dot(one) == one.dot(zero));
-	REQUIRE(zero.dot(one) == Approx(0).epsilon(vmath::zero_tolerance));
-	REQUIRE(two.dot(two) == Approx(two.magnitude_squared()).epsilon(vmath::zero_tolerance));
-	REQUIRE(one_x.dot(one_y) == Approx(0).epsilon(vmath::zero_tolerance));
+	SECTION("dot product") {
+		REQUIRE(zero.dot(one) == one.dot(zero));
+		REQUIRE(zero.dot(one) == Approx(0).epsilon(vmath::zero_tolerance));
+		REQUIRE(two.dot(two) == Approx(two.magnitude_squared()).epsilon(vmath::zero_tolerance));
+		REQUIRE(one_x.dot(one_y) == Approx(0).epsilon(vmath::zero_tolerance));
+	}
 
-	REQUIRE(one_x.cross(one_y) == -one_y.cross(one_x));
-	REQUIRE(one_x.cross(one_y) == vmath::vec3(0, 0, 1));
+	SECTION("cross product") {
+		REQUIRE(one_x.cross(one_y) == -one_y.cross(one_x));
+		REQUIRE(one_x.cross(one_y) == vmath::vec3(0, 0, 1));
+	}
 
 }
