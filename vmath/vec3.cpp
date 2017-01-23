@@ -72,6 +72,12 @@ namespace vmath {
 		);
 	}
 
+	vec3 vec3::normalized() const
+	{
+		auto m = magnitude();
+		return vec3(x / m, y / m, z / m);
+	}
+
 	bool operator==(const vec3& lhs, const vec3& rhs)
 	{
 		return abs(lhs.x - rhs.x) < zero_tolerance

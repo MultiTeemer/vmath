@@ -21,6 +21,7 @@ namespace vmath {
 		float_t dot(const vec3& other) const;
 
 		vec3 cross(const vec3& other) const;
+		vec3 normalized() const;
 
 		static const vec3 zero;
 		static const vec3 half;

@@ -187,4 +187,13 @@ TEST_CASE("vec3 mathematics", "[vec3]") {
 		REQUIRE(one_x.cross(one_y) == vmath::vec3(0, 0, 1));
 	}
 
+	SECTION("normalization") {
+		auto m = vmath::vec3(1, 2, 3);
+		auto mn = m.normalized();
+
+		REQUIRE(mn.x == Approx(m.x / m.magnitude()).epsilon(vmath::zero_tolerance));
+		REQUIRE(mn.y == Approx(m.y / m.magnitude()).epsilon(vmath::zero_tolerance));
+		REQUIRE(mn.z == Approx(m.z / m.magnitude()).epsilon(vmath::zero_tolerance));
+	}
+
 }
