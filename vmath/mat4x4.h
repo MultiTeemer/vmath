@@ -62,6 +62,8 @@ namespace vmath {
 
 		static mat4x4 perspective(float_t fov, float_t ratio, float_t near, float_t far);
 
+		static mat4x4 look_at(const vec3& from, const vec3& to, const vec3& up);
+
 	private:
 		class element_proxy
 		{

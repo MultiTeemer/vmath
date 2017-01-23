@@ -248,6 +248,20 @@ namespace vmath {
 		);
 	}
 
+	mat4x4 mat4x4::look_at(const vec3& from, const vec3& to, const vec3& up)
+	{
+		auto f = (to - from).normalized();
+		auto s = f.cross(up);
+		auto u = s.cross(f);
+
+		return mat4x4(
+			vec4(s),
+			vec4(u),
+			vec4(f),
+			vec4(-from, 1)
+		);
+	}
+
 	bool operator==(const mat4x4& lhs, const mat4x4& rhs)
 	{
 		bool equal = true;

@@ -503,4 +503,22 @@ TEST_CASE("mat4x4 space transformations", "[mat4x4]") {
 		REQUIRE(m == e);
 	}
 
+	SECTION("look at transform") {
+		auto f = vmath::vec3();
+		auto t = vmath::vec3(1, 1, 1);
+		auto u = vmath::vec3::unit_z;
+		auto ots = 1 / sqrt(3.0);
+		auto ot = 1 / 3.0;
+
+		auto m = vmath::mat4x4::look_at(f, t, u);
+		auto e = vmath::mat4x4(
+			ots, -ots, 0, 0,
+			-ot, -ot, 2 * ot, 0,
+			ots, ots, ots, 0,
+			0, 0, 0, 1
+		);
+
+		REQUIRE(m == e);
+	}
+
 }
