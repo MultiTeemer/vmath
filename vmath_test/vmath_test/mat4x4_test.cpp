@@ -479,7 +479,7 @@ TEST_CASE("mat4x4 space transformations", "[mat4x4]") {
 	}
 
 	SECTION("orthographic projection") {
-		auto m = vmath::mat4x4::ortho(-10, 10, -10, 10, 0, -300);
+		auto m = vmath::mat4x4::orthographic(-10, 10, -10, 10, 0, -300);
 		auto e = vmath::mat4x4(
 			2 / 20.0, 0, 0, 0,
 			0, 2 / 20.0, 0, 0,

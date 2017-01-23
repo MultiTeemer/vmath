@@ -220,7 +220,7 @@ namespace vmath {
 		);
 	}
 
-	mat4x4 mat4x4::ortho(float_t left, float_t right, float_t bottom, float_t top, float_t near, float_t far)
+	mat4x4 mat4x4::orthographic(float_t left, float_t right, float_t bottom, float_t top, float_t near, float_t far)
 	{
 		return mat4x4(
 			2 / (right - left), 0, 0, 0,
