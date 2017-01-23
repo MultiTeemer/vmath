@@ -1,6 +1,24 @@
 #include "catch.h"
 #include "vmath.h"
 
+namespace Catch {
+	std::string toString(vmath::mat4x4 const& value) {
+		using std::to_string;
+
+		auto c1 = value[0];
+		auto c2 = value[1];
+		auto c3 = value[2];
+		auto c4 = value[3];
+
+		return std::string("(\n")
+			+ " (" + to_string(c1.x) + ", " + to_string(c1.y) + ", " + to_string(c1.z) + ", " + to_string(c1.w) + "),\n"
+			+ " (" + to_string(c2.x) + ", " + to_string(c2.y) + ", " + to_string(c2.z) + ", " + to_string(c2.w) + "),\n"
+			+ " (" + to_string(c3.x) + ", " + to_string(c3.y) + ", " + to_string(c3.z) + ", " + to_string(c3.w) + "),\n"
+			+ " (" + to_string(c4.x) + ", " + to_string(c4.y) + ", " + to_string(c4.z) + ", " + to_string(c4.w) + "),\n"
+		+ ")\n";
+	}
+}
+
 TEST_CASE("mat4x4 creation", "[mat4x4]") {
 
 	SECTION("parameterless") {
