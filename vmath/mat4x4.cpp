@@ -134,10 +134,10 @@ namespace vmath {
 
 	vec4 mat4x4::operator[] (int idx) const
 	{
-		auto non_cost_me = const_cast<mat4x4&>(*this);
-		auto proxy = non_cost_me[idx];
+		int idx_safe = std::max(std::min(idx, 3), 0);
+		auto addr = data.data() + idx_safe * 4;
 
-		return vec4(proxy[0], proxy[1], proxy[2], proxy[3]);
+		return vec4(*addr, *(addr + 1), *(addr + 2), *(addr + 3));
 	}
 
 	const float_t& mat4x4::element_at(int idx) const
