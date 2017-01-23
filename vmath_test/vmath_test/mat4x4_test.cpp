@@ -490,4 +490,17 @@ TEST_CASE("mat4x4 space transformations", "[mat4x4]") {
 		REQUIRE(m == e);
 	}
 
+	SECTION("perspective projection") {
+		float r = 16 / 9.0;
+		auto m = vmath::mat4x4::perspective(90, r, -1, -300);
+		auto e = vmath::mat4x4(
+			1 / r, 0, 0, 0,
+			0, 2 / (1 + r), 0, 0,
+			0, (1 - r) / (1 + r), 301 / -299.0, -1,
+			0, 0, 600 / -299.0, 0
+		);
+
+		REQUIRE(m == e);
+	}
+
 }
