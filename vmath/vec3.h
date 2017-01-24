@@ -1,9 +1,9 @@
 #pragma once
 
 #include "globals.h"
-#include "vec2.h"
 
 namespace vmath {
+	struct vec2;
 	struct vec3
 	{
 		float_t x;

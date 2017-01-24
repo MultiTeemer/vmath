@@ -1,7 +1,6 @@
 #pragma once
 
 #include "globals.h"
-#include "vec4.h"
 
 #include <array>
 
