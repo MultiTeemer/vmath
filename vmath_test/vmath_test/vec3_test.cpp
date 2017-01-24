@@ -42,6 +42,15 @@ TEST_CASE("vec3 construction", "[vec3]") {
 			REQUIRE(v2.z == Approx(5).epsilon(vmath::zero_tolerance));
 		}
 
+		SECTION("vec4") {
+			auto v4 = vmath::vec4(1, 2, 3, 4);
+			auto v = vmath::vec3(v4);
+
+			REQUIRE(v.x == 1);
+			REQUIRE(v.y == 2);
+			REQUIRE(v.z == 3);
+		}
+
 	}
 
 	SECTION("two args") {

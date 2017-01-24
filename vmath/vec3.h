@@ -4,6 +4,8 @@
 
 namespace vmath {
 	struct vec2;
+	struct vec4;
+
 	struct vec3
 	{
 		float_t x;
@@ -15,6 +17,7 @@ namespace vmath {
 		vec3(float_t x, float_t y, float_t z);
 		explicit vec3(float_t value);
 		explicit vec3(const vec2& xy, float_t z = 0);
+		explicit vec3(const vec4& v);
 
 		float_t magnitude() const;
 		float_t magnitude_squared() const;

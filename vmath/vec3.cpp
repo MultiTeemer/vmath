@@ -1,6 +1,7 @@
 #include "globals.h"
 #include "vec2.h"
 #include "vec3.h"
+#include "vec4.h"
 
 #include <cmath>
 
@@ -46,6 +47,13 @@ namespace vmath {
 		x(xy.x),
 		y(xy.y),
 		z(z)
+	{}
+
+	vec3::vec3(const vec4& v)
+		:
+		x(v.x),
+		y(v.y),
+		z(v.z)
 	{}
 
 	float_t vec3::magnitude_squared() const
