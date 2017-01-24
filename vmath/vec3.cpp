@@ -41,11 +41,11 @@ namespace vmath {
 		z(value)
 	{}
 
-	vec3::vec3(const vec2& xy)
+	vec3::vec3(const vec2& xy, float_t z)
 		:
 		x(xy.x),
 		y(xy.y),
-		z(0)
+		z(z)
 	{}
 
 	float_t vec3::magnitude_squared() const

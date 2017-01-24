@@ -30,11 +30,16 @@ TEST_CASE("vec3 construction", "[vec3]") {
 		}
 
 		SECTION("vec2") {
-			auto v = vmath::vec3(vmath::vec2::one);
+			auto v1 = vmath::vec3(vmath::vec2::one);
+			auto v2 = vmath::vec3(vmath::vec2::one, 5);
 
-			REQUIRE(v.x == Approx(1).epsilon(vmath::zero_tolerance));
-			REQUIRE(v.y == Approx(1).epsilon(vmath::zero_tolerance));
-			REQUIRE(v.z == Approx(0).epsilon(vmath::zero_tolerance));
+			REQUIRE(v1.x == Approx(1).epsilon(vmath::zero_tolerance));
+			REQUIRE(v1.y == Approx(1).epsilon(vmath::zero_tolerance));
+			REQUIRE(v1.z == Approx(0).epsilon(vmath::zero_tolerance));
+
+			REQUIRE(v2.x == Approx(1).epsilon(vmath::zero_tolerance));
+			REQUIRE(v2.y == Approx(1).epsilon(vmath::zero_tolerance));
+			REQUIRE(v2.z == Approx(5).epsilon(vmath::zero_tolerance));
 		}
 
 	}
