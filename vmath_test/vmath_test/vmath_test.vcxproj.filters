@@ -36,6 +36,9 @@
     <ClCompile Include="utils_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="quaternion_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="catch.h">
