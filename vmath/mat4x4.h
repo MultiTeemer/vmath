@@ -29,6 +29,8 @@ namespace vmath {
 		mat4x4 transposed() const;
 		mat4x4 homogenized() const;
 
+		float_t* data();
+
 		row_proxy operator[](int idx);
 		vec4 operator[](int idx) const;
 
@@ -97,7 +99,7 @@ namespace vmath {
 			float_t& w;
 		};
 
-		std::array<float_t, 16> data;
+		std::array<float_t, 16> _data;
 
 		const float_t& element_at(int idx) const;
 		float_t& element_at(int idx);

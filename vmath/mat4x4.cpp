@@ -65,17 +65,17 @@ namespace vmath {
 
 	mat4x4::mat4x4()
 		:
-		data()
+		_data()
 	{}
 
 	mat4x4::mat4x4(float_t value)
 	{
-		data.fill(value);
+		_data.fill(value);
 	}
 
 	mat4x4::mat4x4(float * const rawData)
 	{
-		std::copy(rawData, rawData + 16, data.data());
+		std::copy(rawData, rawData + 16, _data.data());
 	}
 
 	mat4x4::mat4x4(vec4 c1, vec4 c2, vec4 c3, vec4 c4)
@@ -83,7 +83,7 @@ namespace vmath {
 		vec4 columns[4] = { c1, c2, c3, c4 };
 		for (int i = 0; i < 4; ++i) {
 			for (int j = 0; j < 4; ++j) {
-				data[i * 4 + j] = columns[i][j];
+				_data[i * 4 + j] = columns[i][j];
 			}
 		}
 	}
@@ -95,7 +95,7 @@ namespace vmath {
 		float_t m30, float_t m31, float_t m32, float_t m33
 	)
 		:
-		data {
+		_data {
 			m00,  m01,  m02,  m03,
 			m10,  m11,  m12,  m13,
 			m20,  m21,  m22,  m23,
@@ -121,15 +121,20 @@ namespace vmath {
 
 	mat4x4 mat4x4::homogenized() const
 	{
-		auto last = data.back();
+		auto last = _data.back();
 
 		return (*this) * (1 / last);
+	}
+
+	float_t* mat4x4::data()
+	{
+		return _data.data();
 	}
 
 	mat4x4::row_proxy mat4x4::operator[](int idx)
 	{
 		int idx_safe = std::max(std::min(idx, 3), 0);
-		auto addr = data.data() + idx_safe * 4;
+		auto addr = _data.data() + idx_safe * 4;
 
 		return row_proxy(*addr, *(addr + 1), *(addr + 2), *(addr + 3));
 	}
@@ -137,7 +142,7 @@ namespace vmath {
 	vec4 mat4x4::operator[] (int idx) const
 	{
 		int idx_safe = std::max(std::min(idx, 3), 0);
-		auto addr = data.data() + idx_safe * 4;
+		auto addr = _data.data() + idx_safe * 4;
 
 		return vec4(*addr, *(addr + 1), *(addr + 2), *(addr + 3));
 	}
@@ -145,14 +150,14 @@ namespace vmath {
 	vec4 mat4x4::row(int idx) const
 	{
 		int idx_safe = std::max(std::min(idx, 3), 0);
-		auto addr = data.data() + idx_safe;
+		auto addr = _data.data() + idx_safe;
 
 		return vec4(*addr, *(addr + 4), *(addr + 8), *(addr + 12));
 	}
 
 	const float_t& mat4x4::element_at(int idx) const
 	{
-		return data[idx];
+		return _data[idx];
 	}
 
 	float_t& mat4x4::element_at(int idx)
