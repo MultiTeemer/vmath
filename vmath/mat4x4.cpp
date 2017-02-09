@@ -247,19 +247,16 @@ namespace vmath {
 
 	mat4x4 mat4x4::perspective(float_t fov, float_t ratio, float_t near, float_t far)
 	{
-		auto n = -near;
-		auto f = -far;
-
-		auto t = tanf(deg_to_rad(fov/ 2)) * n;
+		auto t = tanf(deg_to_rad(fov / 2)) * -near;
 		auto r = t * ratio;
 		auto l = -t * ratio;
 		auto b = -t * ratio;
 
 		return mat4x4(
-			2 * n / (r - l), 0, 0, 0,
-			0, 2 * n / (t - b), 0, 0,
-			(r + l) / (r - l), (t + b) / (t - b), (f + n) / (n - f), -1,
-			0, 0, 2 * f * n / (n - f), 0
+			2 * near / (r - l), 0, 0, 0,
+			0, 2 * near / (t - b), 0, 0,
+			(r + l) / (r - l), (t + b) / (t - b), (far + near) / (near - far), -1,
+			0, 0, 2 * far * near / (near - far), 0
 		);
 	}
 
