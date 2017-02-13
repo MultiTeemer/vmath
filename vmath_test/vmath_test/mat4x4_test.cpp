@@ -419,6 +419,21 @@ TEST_CASE("mat4x4 mathematics", "[mat4x4]") {
 		REQUIRE(m.homogenized() == i);
 	}
 
+	SECTION("determinant") {
+
+		REQUIRE(vmath::mat4x4::identity.det() == Approx(1).epsilon(vmath::zero_tolerance));
+
+		auto m = vmath::mat4x4(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+		REQUIRE(m.det() == Approx(m.transposed().det()).epsilon(vmath::zero_tolerance));
+		REQUIRE(m.det() == Approx(0).epsilon(vmath::zero_tolerance));
+
+		auto m1 = vmath::mat4x4::identity;
+		m1[1][1] = 2;
+		m1[2][2] = 3;
+		REQUIRE(m1.det() == Approx(6).epsilon(vmath::zero_tolerance));
+
+	}
+
 }
 
 TEST_CASE("mat4x4 space transformations", "[mat4x4]") {

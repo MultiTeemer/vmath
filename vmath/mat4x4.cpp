@@ -131,6 +131,31 @@ namespace vmath {
 		return _data.data();
 	}
 
+	float_t mat4x4::det() const
+	{
+		auto& me = *this;
+		return
+			me[0][0] * det3x3(me[1][1], me[1][2], me[1][3], me[2][1], me[2][2], me[2][3], me[3][1], me[3][2], me[3][3])
+			- me[1][0] * det3x3(me[0][1], me[0][2], me[0][3], me[2][1], me[2][2], me[2][3], me[3][1], me[3][2], me[3][3])
+			+ me[2][0] * det3x3(me[0][1], me[0][2], me[0][3], me[1][1], me[1][2], me[1][3], me[3][1], me[3][2], me[3][3])
+			- me[3][0] * det3x3(me[0][1], me[0][2], me[0][3], me[1][1], me[1][2], me[1][3], me[2][1], me[2][2], me[2][3])
+		;
+	}
+
+	float_t mat4x4::det3x3(
+		float_t a11, float_t a21, float_t a31,
+		float_t a12, float_t a22, float_t a32,
+		float_t a13, float_t a23, float_t a33
+	) const
+	{
+		return a11 * det2x2(a22, a32, a23, a33) - a12 * det2x2(a21, a31, a23, a33) + a13 * det2x2(a21, a31, a22, a32);
+	}
+
+	float_t mat4x4::det2x2(float_t a11, float_t a21, float_t a12, float_t a22) const
+	{
+		return a11 * a22 - a12 * a21;
+	}
+
 	mat4x4::row_proxy mat4x4::operator[](int idx)
 	{
 		int idx_safe = std::max(std::min(idx, 3), 0);

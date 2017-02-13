@@ -31,6 +31,8 @@ namespace vmath {
 
 		float_t* data();
 
+		float_t det() const;
+
 		row_proxy operator[](int idx);
 		vec4 operator[](int idx) const;
 
@@ -104,5 +106,12 @@ namespace vmath {
 
 		const float_t& element_at(int idx) const;
 		float_t& element_at(int idx);
+
+		float_t det3x3(
+			float_t a11, float_t a21, float_t a31,
+			float_t a12, float_t a22, float_t a32,
+			float_t a13, float_t a23, float_t a33
+		) const;
+		float_t det2x2(float_t a11, float_t a21, float_t a12, float_t a22) const;
 	};
 }
