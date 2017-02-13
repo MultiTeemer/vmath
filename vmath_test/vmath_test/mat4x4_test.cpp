@@ -497,24 +497,6 @@ TEST_CASE("mat4x4 space transformations", "[mat4x4]") {
 
 				REQUIRE(m == e);
 			}
-
-			SECTION("some axis") {
-				auto a = vmath::vec3(1, 1, 1);
-				auto m = vmath::mat4x4::rotation(a, x);
-
-				auto c = cos(x);
-				auto s = sin(x);
-
-				auto e = vmath::mat4x4(
-					1, 1 - c + s, 1 - c - s, 0,
-					1 - c - s, 1, 1 - c + s, 0,
-					1 - c + s, 1 - c - s, 1, 0,
-					0, 0, 0, 1
-				);
-
-				REQUIRE(m == e);
-			}
-
 		}
 	}
 

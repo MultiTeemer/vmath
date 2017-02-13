@@ -229,7 +229,7 @@ TEST_CASE("quaternion math", "[quaternion]") {
 		auto alpha = vmath::deg_to_rad(45);
 		auto v = vmath::vec3(1);
 		auto q = vmath::quaternion::rotation(v, alpha);
-		auto e = vmath::quaternion(cos(alpha / 2), sin(alpha / 2) * v);
+		auto e = vmath::quaternion(cos(alpha / 2), sin(alpha / 2) * v.normalized()).normalized();
 
 		REQUIRE(q == e);
 	}

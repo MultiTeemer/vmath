@@ -217,13 +217,14 @@ namespace vmath {
 
 	mat4x4 mat4x4::rotation(vec3 axis, float_t rad)
 	{
+		auto a = axis.normalized();
 		float_t c = cos(rad);
 		float_t s = sin(rad);
 
 		return mat4x4(
-			c + (1 - c) * axis.x * axis.x, (1 - c) * axis.x * axis.y + s * axis.z, (1 - c) * axis.x * axis.z - s * axis.y, 0,
-			(1 - c) * axis.x * axis.y - s * axis.z, c + (1 - c) * axis.y * axis.y, (1 - c) * axis.y * axis.z + s * axis.x, 0,
-			(1 - c) * axis.x * axis.z + s * axis.y, (1 - c) * axis.y * axis.z - s * axis.x, c + (1 - c) * axis.z * axis.z, 0,
+			c + (1 - c) * a.x * a.x, (1 - c) * a.x * a.y + s * a.z, (1 - c) * a.x * a.z - s * a.y, 0,
+			(1 - c) * a.x * a.y - s * a.z, c + (1 - c) * a.y * a.y, (1 - c) * a.y * a.z + s * a.x, 0,
+			(1 - c) * a.x * a.z + s * a.y, (1 - c) * a.y * a.z - s * a.x, c + (1 - c) * a.z * a.z, 0,
 			0, 0, 0, 1
 		);
 	}
