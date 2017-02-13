@@ -235,3 +235,14 @@ TEST_CASE("quaternion math", "[quaternion]") {
 	}
 
 }
+
+TEST_CASE("quaternion to matrix", "[quaternion]") {
+
+	auto v = vmath::vec3(1);
+	auto alpha = vmath::rad_to_deg(45);
+	auto e = vmath::mat4x4::rotation(v, alpha);
+	auto m = vmath::quaternion::rotation(v, alpha).to_matrix();
+
+	REQUIRE(m == e);
+
+}

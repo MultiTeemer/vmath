@@ -4,6 +4,7 @@
 
 namespace vmath {
 	struct vec3;
+	struct mat4x4;
 
 	struct quaternion
 	{
@@ -24,7 +25,10 @@ namespace vmath {
 
 		quaternion normalized() const;
 		quaternion conjugated() const;
+
 		float_t magnitude() const;
+
+		mat4x4 to_matrix() const;
 
 		quaternion& set_imaginary(const vec3& new_imaginary);
 
