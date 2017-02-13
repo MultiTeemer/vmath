@@ -229,6 +229,14 @@ TEST_CASE("mat4x4 element access", "[mat4x4]") {
 		REQUIRE(m.row(3) == vmath::vec4(4, 8, 12, 16));
 	}
 
+	SECTION("raw data access") {
+		auto m = vmath::mat4x4(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+
+		for (int i = 0; i < 16; ++i) {
+			REQUIRE(*(m.data() + i) == Approx(m[i / 4][i % 4]).epsilon(vmath::zero_tolerance));
+		}
+	}
+
 }
 
 TEST_CASE("mat4x4 constants", "[mat4x4]") {
