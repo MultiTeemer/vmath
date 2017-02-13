@@ -475,7 +475,7 @@ TEST_CASE("mat4x4 space transformations", "[mat4x4]") {
 			REQUIRE(m == e);
 		}
 
-		SECTION("around arbitrary access") {
+		SECTION("around arbitrary axis") {
 
 			SECTION("x") {
 				auto m = vmath::mat4x4::rotation(vmath::vec3::unit_x, x);
