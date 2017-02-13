@@ -225,4 +225,13 @@ TEST_CASE("quaternion math", "[quaternion]") {
 		REQUIRE(pn.imaginary() == vmath::vec3(0.5f));
 	}
 
+	SECTION("rotation") {
+		auto alpha = vmath::deg_to_rad(45);
+		auto v = vmath::vec3(1);
+		auto q = vmath::quaternion::rotation(v, alpha);
+		auto e = vmath::quaternion(cos(alpha / 2), sin(alpha / 2) * v);
+
+		REQUIRE(q == e);
+	}
+
 }

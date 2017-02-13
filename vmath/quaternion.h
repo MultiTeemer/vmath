@@ -27,6 +27,8 @@ namespace vmath {
 		float_t magnitude() const;
 
 		quaternion& set_imaginary(const vec3& new_imaginary);
+
+		static quaternion rotation(vec3 axis, float_t deg);
 	};
 
 	bool operator==(const quaternion& lhs, const quaternion& rhs);

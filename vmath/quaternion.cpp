@@ -75,6 +75,11 @@ namespace vmath {
 		return *this;
 	}
 
+	quaternion quaternion::rotation(vec3 axis, float_t deg)
+	{
+		return quaternion(cos(deg / 2), axis * sin(deg / 2));
+	}
+
 	bool operator==(const quaternion& lhs, const quaternion& rhs)
 	{
 		return std::abs(lhs.real() - rhs.real()) < zero_tolerance && lhs.imaginary() == rhs.imaginary();
