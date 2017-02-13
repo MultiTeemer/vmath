@@ -59,6 +59,7 @@ namespace vmath {
 		static mat4x4 rotation_x(float_t rad);
 		static mat4x4 rotation_y(float_t rad);
 		static mat4x4 rotation_z(float_t rad);
+		static mat4x4 rotation(vec3 axis, float_t rad);
 
 		static mat4x4 scale(float_t s);
 		static mat4x4 scale(const vec3& scale);

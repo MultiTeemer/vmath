@@ -474,6 +474,48 @@ TEST_CASE("mat4x4 space transformations", "[mat4x4]") {
 
 			REQUIRE(m == e);
 		}
+
+		SECTION("around arbitrary access") {
+
+			SECTION("x") {
+				auto m = vmath::mat4x4::rotation(vmath::vec3::unit_x, x);
+				auto e = vmath::mat4x4::rotation_x(x);
+
+				REQUIRE(m == e);
+			}
+
+			SECTION("y") {
+				auto m = vmath::mat4x4::rotation(vmath::vec3::unit_y, x);
+				auto e = vmath::mat4x4::rotation_y(x);
+
+				REQUIRE(m == e);
+			}
+
+			SECTION("z") {
+				auto m = vmath::mat4x4::rotation(vmath::vec3::unit_z, x);
+				auto e = vmath::mat4x4::rotation_z(x);
+
+				REQUIRE(m == e);
+			}
+
+			SECTION("some axis") {
+				auto a = vmath::vec3(1, 1, 1);
+				auto m = vmath::mat4x4::rotation(a, x);
+
+				auto c = cos(x);
+				auto s = sin(x);
+
+				auto e = vmath::mat4x4(
+					1, 1 - c + s, 1 - c - s, 0,
+					1 - c - s, 1, 1 - c + s, 0,
+					1 - c + s, 1 - c - s, 1, 0,
+					0, 0, 0, 1
+				);
+
+				REQUIRE(m == e);
+			}
+
+		}
 	}
 
 	SECTION("scaling") {
