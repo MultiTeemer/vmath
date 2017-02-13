@@ -28,6 +28,9 @@ namespace vmath {
 
 		mat4x4 transposed() const;
 		mat4x4 homogenized() const;
+		mat4x4 inversed() const;
+
+		bool invertable() const;
 
 		float_t* data();
 

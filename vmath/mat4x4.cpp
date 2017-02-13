@@ -126,6 +126,140 @@ namespace vmath {
 		return (*this) * (1 / last);
 	}
 
+	mat4x4 mat4x4::inversed() const
+	{
+		float_t inv[16];
+
+		inv[0] = _data[5] * _data[10] * _data[15] -
+			_data[5] * _data[11] * _data[14] -
+			_data[9] * _data[6] * _data[15] +
+			_data[9] * _data[7] * _data[14] +
+			_data[13] * _data[6] * _data[11] -
+			_data[13] * _data[7] * _data[10];
+
+		inv[4] = -_data[4] * _data[10] * _data[15] +
+			_data[4] * _data[11] * _data[14] +
+			_data[8] * _data[6] * _data[15] -
+			_data[8] * _data[7] * _data[14] -
+			_data[12] * _data[6] * _data[11] +
+			_data[12] * _data[7] * _data[10];
+
+		inv[8] = _data[4] * _data[9] * _data[15] -
+			_data[4] * _data[11] * _data[13] -
+			_data[8] * _data[5] * _data[15] +
+			_data[8] * _data[7] * _data[13] +
+			_data[12] * _data[5] * _data[11] -
+			_data[12] * _data[7] * _data[9];
+
+		inv[12] = -_data[4] * _data[9] * _data[14] +
+			_data[4] * _data[10] * _data[13] +
+			_data[8] * _data[5] * _data[14] -
+			_data[8] * _data[6] * _data[13] -
+			_data[12] * _data[5] * _data[10] +
+			_data[12] * _data[6] * _data[9];
+
+		inv[1] = -_data[1] * _data[10] * _data[15] +
+			_data[1] * _data[11] * _data[14] +
+			_data[9] * _data[2] * _data[15] -
+			_data[9] * _data[3] * _data[14] -
+			_data[13] * _data[2] * _data[11] +
+			_data[13] * _data[3] * _data[10];
+
+		inv[5] = _data[0] * _data[10] * _data[15] -
+			_data[0] * _data[11] * _data[14] -
+			_data[8] * _data[2] * _data[15] +
+			_data[8] * _data[3] * _data[14] +
+			_data[12] * _data[2] * _data[11] -
+			_data[12] * _data[3] * _data[10];
+
+		inv[9] = -_data[0] * _data[9] * _data[15] +
+			_data[0] * _data[11] * _data[13] +
+			_data[8] * _data[1] * _data[15] -
+			_data[8] * _data[3] * _data[13] -
+			_data[12] * _data[1] * _data[11] +
+			_data[12] * _data[3] * _data[9];
+
+		inv[13] = _data[0] * _data[9] * _data[14] -
+			_data[0] * _data[10] * _data[13] -
+			_data[8] * _data[1] * _data[14] +
+			_data[8] * _data[2] * _data[13] +
+			_data[12] * _data[1] * _data[10] -
+			_data[12] * _data[2] * _data[9];
+
+		inv[2] = _data[1] * _data[6] * _data[15] -
+			_data[1] * _data[7] * _data[14] -
+			_data[5] * _data[2] * _data[15] +
+			_data[5] * _data[3] * _data[14] +
+			_data[13] * _data[2] * _data[7] -
+			_data[13] * _data[3] * _data[6];
+
+		inv[6] = -_data[0] * _data[6] * _data[15] +
+			_data[0] * _data[7] * _data[14] +
+			_data[4] * _data[2] * _data[15] -
+			_data[4] * _data[3] * _data[14] -
+			_data[12] * _data[2] * _data[7] +
+			_data[12] * _data[3] * _data[6];
+
+		inv[10] = _data[0] * _data[5] * _data[15] -
+			_data[0] * _data[7] * _data[13] -
+			_data[4] * _data[1] * _data[15] +
+			_data[4] * _data[3] * _data[13] +
+			_data[12] * _data[1] * _data[7] -
+			_data[12] * _data[3] * _data[5];
+
+		inv[14] = -_data[0] * _data[5] * _data[14] +
+			_data[0] * _data[6] * _data[13] +
+			_data[4] * _data[1] * _data[14] -
+			_data[4] * _data[2] * _data[13] -
+			_data[12] * _data[1] * _data[6] +
+			_data[12] * _data[2] * _data[5];
+
+		inv[3] = -_data[1] * _data[6] * _data[11] +
+			_data[1] * _data[7] * _data[10] +
+			_data[5] * _data[2] * _data[11] -
+			_data[5] * _data[3] * _data[10] -
+			_data[9] * _data[2] * _data[7] +
+			_data[9] * _data[3] * _data[6];
+
+		inv[7] = _data[0] * _data[6] * _data[11] -
+			_data[0] * _data[7] * _data[10] -
+			_data[4] * _data[2] * _data[11] +
+			_data[4] * _data[3] * _data[10] +
+			_data[8] * _data[2] * _data[7] -
+			_data[8] * _data[3] * _data[6];
+
+		inv[11] = -_data[0] * _data[5] * _data[11] +
+			_data[0] * _data[7] * _data[9] +
+			_data[4] * _data[1] * _data[11] -
+			_data[4] * _data[3] * _data[9] -
+			_data[8] * _data[1] * _data[7] +
+			_data[8] * _data[3] * _data[5];
+
+		inv[15] = _data[0] * _data[5] * _data[10] -
+			_data[0] * _data[6] * _data[9] -
+			_data[4] * _data[1] * _data[10] +
+			_data[4] * _data[2] * _data[9] +
+			_data[8] * _data[1] * _data[6] -
+			_data[8] * _data[2] * _data[5];
+
+		float_t det = _data[0] * inv[0] + _data[1] * inv[4] + _data[2] * inv[8] + _data[3] * inv[12];
+
+		for (int i = 0; i < 16; i++)
+			inv[i] /= det;
+
+		return mat4x4(
+			inv[0], inv[1], inv[2], inv[3],
+			inv[4], inv[5], inv[6], inv[7],
+			inv[8], inv[9], inv[10], inv[11],
+			inv[12], inv[13], inv[14], inv[15]
+		);
+	}
+
+	bool mat4x4::invertable() const
+	{
+		return abs(det()) > zero_tolerance;
+	}
+
 	float_t* mat4x4::data()
 	{
 		return _data.data();

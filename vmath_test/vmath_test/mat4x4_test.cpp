@@ -434,6 +434,76 @@ TEST_CASE("mat4x4 mathematics", "[mat4x4]") {
 
 	}
 
+	SECTION("inversion") {
+
+		SECTION("invertability") {
+			auto alpha = vmath::deg_to_rad(45);
+
+			REQUIRE(vmath::mat4x4::identity.invertable());
+			REQUIRE(vmath::mat4x4::translation(vmath::vec3(1)).invertable());
+			REQUIRE(vmath::mat4x4::rotation_x(alpha).invertable());
+			REQUIRE(vmath::mat4x4::rotation_y(alpha).invertable());
+			REQUIRE(vmath::mat4x4::rotation_z(alpha).invertable());
+			REQUIRE(vmath::mat4x4::rotation(vmath::vec3(1), alpha).invertable());
+			REQUIRE(vmath::mat4x4::scale(3).invertable());
+			REQUIRE(vmath::mat4x4::orthographic(-100, 100, -100, 100, -0.1, -100).invertable());
+			REQUIRE(vmath::mat4x4::perspective(50, 4 / 3.0, 0.1, 1000).invertable());
+			REQUIRE(vmath::mat4x4::look_at(vmath::vec3(), vmath::vec3(1, 2, 3), vmath::vec3::unit_y).invertable());
+
+			REQUIRE_FALSE(vmath::mat4x4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1).invertable());
+		}
+
+		SECTION("actual inversion") {
+
+			SECTION("identity") {
+				REQUIRE(vmath::mat4x4::identity.inversed() == vmath::mat4x4::identity);
+			}
+
+			SECTION("translation") {
+				auto v = vmath::vec3(1);
+				auto m = vmath::mat4x4::translation(v);
+
+				REQUIRE(m.inversed() == vmath::mat4x4::translation(-v));
+			}
+
+			SECTION("rotation") {
+
+				const auto alpha = vmath::deg_to_rad(45);
+
+				SECTION("around x axis") {
+					auto m = vmath::mat4x4::rotation_x(alpha);
+					REQUIRE(m.inversed() == vmath::mat4x4::rotation_x(-alpha));
+				}
+
+				SECTION("around y axis") {
+					auto m = vmath::mat4x4::rotation_y(alpha);
+					REQUIRE(m.inversed() == vmath::mat4x4::rotation_y(-alpha));
+				}
+
+				SECTION("around z axis") {
+					auto m = vmath::mat4x4::rotation_z(alpha);
+					REQUIRE(m.inversed() == vmath::mat4x4::rotation_z(-alpha));
+				}
+
+				SECTION("around arbitrary axis") {
+					auto v = vmath::vec3(1);
+					auto m = vmath::mat4x4::rotation(v, alpha);
+					REQUIRE(m.inversed() == vmath::mat4x4::rotation(v, -alpha));
+					REQUIRE(m.inversed() == vmath::mat4x4::rotation(-v, alpha));
+				}
+
+			}
+
+			SECTION("scaling") {
+				auto m = vmath::mat4x4::scale(3);
+				auto mi = vmath::mat4x4::scale(1 / 3.);
+				REQUIRE(m.inversed() == mi);
+			}
+
+		}
+
+	}
+
 }
 
 TEST_CASE("mat4x4 space transformations", "[mat4x4]") {
