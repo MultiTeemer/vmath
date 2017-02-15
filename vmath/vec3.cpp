@@ -86,6 +86,19 @@ namespace vmath {
 		return vec3(x / m, y / m, z / m);
 	}
 
+	float_t vec3::operator[](int idx) const
+	{
+		switch (idx)
+		{
+		case 0:
+			return x;
+		case 1:
+			return y;
+		default:
+			return z;
+		}
+	}
+
 	bool operator==(const vec3& lhs, const vec3& rhs)
 	{
 		return abs(lhs.x - rhs.x) < zero_tolerance

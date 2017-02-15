@@ -10,24 +10,24 @@ namespace Catch {
 }
 
 TEST_CASE("vec2 construction", "[vec2]") {
-	
+
 	SECTION("parameterless") {
 		auto v = vmath::vec2();
-		
+
 		REQUIRE(v.x == Approx(0).epsilon(vmath::zero_tolerance));
 		REQUIRE(v.y == Approx(0).epsilon(vmath::zero_tolerance));
 	}
 
 	SECTION("one arg") {
 		auto v = vmath::vec2(1);
-		
+
 		REQUIRE(v.x == Approx(1).epsilon(vmath::zero_tolerance));
 		REQUIRE(v.y == Approx(1).epsilon(vmath::zero_tolerance));
 	}
 
 	SECTION("two args") {
 		auto v = vmath::vec2(1, 2);
-		
+
 		REQUIRE(v.x == Approx(1).epsilon(vmath::zero_tolerance));
 		REQUIRE(v.y == Approx(2).epsilon(vmath::zero_tolerance));
 	}
@@ -35,7 +35,7 @@ TEST_CASE("vec2 construction", "[vec2]") {
 }
 
 TEST_CASE("vec2 constants", "[vec2]") {
-	
+
 	REQUIRE(vmath::vec2::zero.x == Approx(0).epsilon(vmath::zero_tolerance));
 	REQUIRE(vmath::vec2::zero.y == Approx(0).epsilon(vmath::zero_tolerance));
 
@@ -66,7 +66,7 @@ TEST_CASE("vec2 constants", "[vec2]") {
 }
 
 TEST_CASE("vec2 operators", "[vec2]") {
-	
+
 	SECTION("equality/inequality") {
 		auto v1 = vmath::vec2();
 		auto v2 = vmath::vec2();
@@ -134,10 +134,18 @@ TEST_CASE("vec2 operators", "[vec2]") {
 		REQUIRE(v2 * 2 == v3);
 	}
 
+	SECTION("element access") {
+		auto v = vmath::vec2(1, 2);
+
+		REQUIRE(v[0] == 1);
+		REQUIRE(v[1] == 2);
+		REQUIRE(v[500] == 2);
+	}
+
 }
 
 TEST_CASE("vec2 mathematics", "[vec2]") {
-	
+
 	auto zero = vmath::vec2::zero;
 	auto one = vmath::vec2::one;
 	auto two = vmath::vec2(2);

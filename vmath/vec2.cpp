@@ -4,7 +4,7 @@
 #include <cmath>
 
 namespace vmath {
-	
+
 	const vec2 vec2::zero = vec2();
 	const vec2 vec2::half = vec2(0.5, 0.5);
 	const vec2 vec2::one = vec2(1);
@@ -59,6 +59,11 @@ namespace vmath {
 		return vec2(x / m, y / m);
 	}
 
+	float_t vec2::operator[](int idx) const
+	{
+		return idx == 0 ? x : y;
+	}
+
 	bool operator==(const vec2& lhs, const vec2& rhs)
 	{
 		return abs(lhs.x - rhs.x) < zero_tolerance && abs(lhs.y - rhs.y) < zero_tolerance;
@@ -74,13 +79,13 @@ namespace vmath {
 		auto tmp = lhs;
 		return tmp += rhs;
 	}
-	
+
 	vec2 operator+(const vec2& lhs, float_t rhs)
 	{
 		auto tmp = lhs;
 		return tmp += rhs;
 	}
-	
+
 	vec2 operator+(float_t lhs, const vec2& rhs)
 	{
 		auto tmp = rhs;
@@ -94,7 +99,7 @@ namespace vmath {
 
 		return lhs;
 	}
-	
+
 	vec2& operator+=(vec2& lhs, float_t rhs)
 	{
 		lhs.x += rhs;

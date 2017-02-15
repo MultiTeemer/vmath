@@ -26,6 +26,8 @@ namespace vmath {
 		vec3 cross(const vec3& other) const;
 		vec3 normalized() const;
 
+		float_t operator[](int idx) const;
+
 		static const vec3 zero;
 		static const vec3 half;
 		static const vec3 one;

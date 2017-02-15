@@ -20,6 +20,8 @@ namespace vmath
 
 		vec2 normalized() const;
 
+		float_t operator[] (int idx) const;
+
 		static const vec2 zero;
 		static const vec2 half;
 		static const vec2 one;

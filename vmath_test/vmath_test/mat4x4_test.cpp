@@ -160,10 +160,10 @@ TEST_CASE("mat4x4 creation", "[mat4x4]") {
 }
 
 TEST_CASE("mat4x4 element access", "[mat4x4]") {
-	
+
 	SECTION("reading") {
 		auto m = vmath::mat4x4(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
-	
+
 		REQUIRE(m[0][0] == Approx(1).epsilon(vmath::zero_tolerance));
 		REQUIRE(m[0][1] == Approx(2).epsilon(vmath::zero_tolerance));
 		REQUIRE(m[0][2] == Approx(3).epsilon(vmath::zero_tolerance));

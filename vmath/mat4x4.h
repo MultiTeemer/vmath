@@ -11,7 +11,7 @@ namespace vmath {
 		class row_proxy;
 
 	public:
-		static const int elements_count;
+		static const int elements_count = 16;
 
 		static const mat4x4 identity;
 
@@ -105,16 +105,9 @@ namespace vmath {
 			float_t& w;
 		};
 
-		std::array<float_t, 16> _data;
+		std::array<float_t, elements_count> _data;
 
 		const float_t& element_at(int idx) const;
 		float_t& element_at(int idx);
-
-		float_t det3x3(
-			float_t a11, float_t a21, float_t a31,
-			float_t a12, float_t a22, float_t a32,
-			float_t a13, float_t a23, float_t a33
-		) const;
-		float_t det2x2(float_t a11, float_t a21, float_t a12, float_t a22) const;
 	};
 }

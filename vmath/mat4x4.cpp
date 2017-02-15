@@ -2,14 +2,13 @@
 #include "utils.h"
 #include "vec3.h"
 #include "vec4.h"
+#include "mat3x3.h"
 #include "mat4x4.h"
 
 #include <algorithm>
 #include <cmath>
 
 namespace vmath {
-
-	const int mat4x4::elements_count = 16;
 
 	const mat4x4 mat4x4::identity = mat4x4(
 		1, 0, 0, 0,
@@ -269,25 +268,11 @@ namespace vmath {
 	{
 		auto& me = *this;
 		return
-			me[0][0] * det3x3(me[1][1], me[1][2], me[1][3], me[2][1], me[2][2], me[2][3], me[3][1], me[3][2], me[3][3])
-			- me[1][0] * det3x3(me[0][1], me[0][2], me[0][3], me[2][1], me[2][2], me[2][3], me[3][1], me[3][2], me[3][3])
-			+ me[2][0] * det3x3(me[0][1], me[0][2], me[0][3], me[1][1], me[1][2], me[1][3], me[3][1], me[3][2], me[3][3])
-			- me[3][0] * det3x3(me[0][1], me[0][2], me[0][3], me[1][1], me[1][2], me[1][3], me[2][1], me[2][2], me[2][3])
+			me[0][0] * mat3x3(me[1][1], me[1][2], me[1][3], me[2][1], me[2][2], me[2][3], me[3][1], me[3][2], me[3][3]).det()
+			- me[1][0] * mat3x3(me[0][1], me[0][2], me[0][3], me[2][1], me[2][2], me[2][3], me[3][1], me[3][2], me[3][3]).det()
+			+ me[2][0] * mat3x3(me[0][1], me[0][2], me[0][3], me[1][1], me[1][2], me[1][3], me[3][1], me[3][2], me[3][3]).det()
+			- me[3][0] * mat3x3(me[0][1], me[0][2], me[0][3], me[1][1], me[1][2], me[1][3], me[2][1], me[2][2], me[2][3]).det()
 		;
-	}
-
-	float_t mat4x4::det3x3(
-		float_t a11, float_t a21, float_t a31,
-		float_t a12, float_t a22, float_t a32,
-		float_t a13, float_t a23, float_t a33
-	) const
-	{
-		return a11 * det2x2(a22, a32, a23, a33) - a12 * det2x2(a21, a31, a23, a33) + a13 * det2x2(a21, a31, a22, a32);
-	}
-
-	float_t mat4x4::det2x2(float_t a11, float_t a21, float_t a12, float_t a22) const
-	{
-		return a11 * a22 - a12 * a21;
 	}
 
 	mat4x4::row_proxy mat4x4::operator[](int idx)
