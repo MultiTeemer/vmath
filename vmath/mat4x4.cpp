@@ -405,7 +405,7 @@ namespace vmath {
 
 	mat4x4 mat4x4::perspective(float_t fov, float_t ratio, float_t near, float_t far)
 	{
-		auto t = tanf(deg_to_rad(fov / 2)) * -near;
+		auto t = tanf(deg_to_rad(fov / 2)) * near;
 		auto r = t * ratio;
 		auto l = -t * ratio;
 		auto b = -t * ratio;
